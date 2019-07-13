@@ -3,8 +3,10 @@ package com.cqjtu.bookstore.bean;
 public class UserInfo {
 
 	private String userId;
+
 	private String userName;
-	private String password;
+
+	private String passWord;
 
 	public String getUserId() {
 		return userId;
@@ -23,11 +25,11 @@ public class UserInfo {
 	}
 
 	public String getPassword() {
-		return password;
+		return passWord;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPassword(String passWord) {
+		this.passWord = passWord;
 	}
 
 }

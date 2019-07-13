@@ -11,21 +11,21 @@ public interface UserInfoDao {
 	 * 
 	 * @param userInfo
 	 */
-	public void addUser(UserInfo userInfo);
+	public void addUserInfo(UserInfo userInfo);
 
 	/**
 	 * 删除用户信息
 	 * 
 	 * @param userInfo
 	 */
-	public void delUser(UserInfo userInfo);
+	public void delUserInfo(UserInfo userInfo);
 
 	/**
 	 * 更新用户信息
 	 * 
 	 * @param userInfo
 	 */
-	public void updateUser(UserInfo userInfo);
+	public void updateUserInfo(UserInfo userInfo);
 
 	/**
 	 * 查询用户信息
@@ -33,13 +33,6 @@ public interface UserInfoDao {
 	 * @param userInfo
 	 * @return
 	 */
-	public List<UserInfo> queryUser(UserInfo userInfo);
+	public List<UserInfo> queryUserInfo();
 
-	/**
-	 * 根据Id查询用户信息
-	 * 
-	 * @param userInfo
-	 * @return
-	 */
-	public UserInfo queryUserById(UserInfo userInfo);
 }

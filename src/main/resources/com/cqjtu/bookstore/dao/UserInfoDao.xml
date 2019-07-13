@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqjtu.bookstore.dao.UserInfoDao">
+	
+	<insert id="addUserInfo" parameterType="UserInfo">
+		insert into user_info(user_id,user_name,password) 
+		values(#{userId},#{userName},#{passWord})
+	</insert>
+	
+	<delete id="delUserInfo" parameterType="UserInfo">
+		delete from user_info where user_id = #{userId}
+	</delete>
+	
+	<update id="updateUserInfo" parameterType="UserInfo">
+		update user_info set user_name = #{userName},
+		password = #{passWord} 
+		where user_id = #{userId}
+	</update>
+	
+	<resultMap type="UserInfo" id="userinfomap">
+		<id column="user_id" property="userId"/>
+		<result column="user_name" property="userName"/>
+		<result column="password" property="passWord"/>
+	</resultMap>
+	
+	<select id="queryUserInfo" parameterType="UserInfo"
+	resultType="List" resultMap="userinfomap">
+		select * from user_info
+		<where>
+			<if test="userId != null and userId !=''">
+				and user_id = #{userId}
+			</if>
+			<if test="userName != null and userName !=''">
+				and user_name = #{userName}
+			</if>
+			<if test="passWord != null and passWord !=''">
+				and password = #{passWord}
+			</if>
+		</where>
+	</select>
+
+</mapper>
