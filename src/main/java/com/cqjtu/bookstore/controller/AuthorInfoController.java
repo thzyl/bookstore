@@ -1,6 +1,5 @@
 package com.cqjtu.bookstore.controller;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +20,13 @@ public class AuthorInfoController {
 	public String index() {
 		Date d = new Date();
 		AuthorInfo authorInfo = new AuthorInfo();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		authorInfo.setAuthorName("thzyl");
 		authorInfo.setAuthorTele("15736287593");
 		authorInfo.setAuthorEmail("1827289175@qq.com");
 		authorInfo.setAuthorPassword("thzyl1325");
 		authorInfo.setAuthorVip("true");
-		authorInfo.setAuthorId(
-				String.valueOf(Math.abs((authorInfo.getAuthorTele() + sdf.format(d).toString()).hashCode()))
-						+ Math.round(Math.random() * 100));
+		authorInfo.setAuthorId(String.valueOf(Math.abs((authorInfo.getAuthorTele() + d.toString()).hashCode()))
+				+ Math.round(Math.random() * 100));
 		authorInfo.setEnrollDate(d);
 		authorInfoService.authorInfoEnroll(authorInfo);
 		return "index";
