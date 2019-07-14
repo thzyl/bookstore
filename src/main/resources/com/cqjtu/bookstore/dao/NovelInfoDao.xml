@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqjtu.bookstore.dao.NovelInfoDao">
+	
+	<insert id="addNovelInfo" parameterType="NovelInfo">
+		insert into novel_info(novel_id,novel_name,novel_style,novel_status,novel_attribute,novel_synopsis,novel_lable,
+		novel_image,create_date,update_date,novel_grade,novel_count,pageview_count,collection_count,praise_count,author_id) 
+		values(#{novelId},#{novelName},#{novelStyle},#{novelStatus},#{novelAttribute},#{novelSynopsis},#{novelLable},#{novelImage},
+		#{createDate},#{updateDate},#{novelGrade},#{novelCount},#{pageviewCount},#{collectionCount},#{praiseCount},#{authorInfo.authorId})
+	</insert>
+	
+	<delete id="deleteNovelInfo" parameterType="NovelInfo">
+		delete from novel_info where novel_id = #{novelId}
+	</delete>
+	
+	<update id="updateNovelInfo" parameterType="NovelInfo">
+		update novel_info set novel_name = #{novelName},
+		novel_style = #{novelStyle},
+		novel_status = #{novelStatus},
+		novel_attribute = #{novelAttribute},
+		novel_synopsis = #{novelSynopsis},
+		novel_lable = #{novelLable},
+		novel_image = #{novelImage},
+		create_date = #{createDate},
+		update_date = #{updateDate},
+		novel_grade = #{novelGrade},
+		novel_count = #{novelCount},
+		collection_count = #{collectionCount},
+		praise_count = #{praiseCount},
+		author_id = #{authorInfo.authorId}
+		where novel_id = #{novelId}
+	</update>
+	
+	<resultMap type="NovelInfo" id="novelinfomap">
+		<id column="novel_id" property="novelId"/>
+			<result column="novel_name" property="novelName"/>
+			<result column="novel_style" property="novelStyle"/>
+			<result column="novel_status" property="novelStatus"/>
+			<result column="novel_attribute" property="novelAttribute"/>
+			<result column="novel_synopsis" property="novelSynopsis"/>
+			<result column="novel_lable" property="novelLable"/>
+			<result column="novel_image" property="novelImage"/>
+			<result column="create_date" property="createDate"/>
+			<result column="update_date" property="updateDate"/>
+			<result column="novel_grade" property="novelGrade"/>
+			<result column="novel_count" property="novelCount"/>
+			<result column="pageciew_count" property="pageviewCount"/>
+			<result column="collection_count" property="collectionCount"/>
+			<result column="praise_count" property="praiseCount"/>
+		<association property="authorInfo" javaType="AuthorInfo">
+			<id column="author_id" property="authorId"/>
+			<result column="author_name" property="authorName"/>
+			<result column="author_tele" property="authorTele"/>
+			<result column="author_email" property="authorEmail"/>
+			<result column="author_password" property="authorPassword"/>
+			<result column="author_avatar" property="authorAvatar"/>
+			<result column="author_vip" property="authorVip"/>
+			<result column="enroll_date" property="enrollDate"/>
+			<result column="end_date" property="endDate"/>
+		</association>
+		<collection property="chapterInfos" ofType="ChapterInfo">
+			<id column="chapter_id" property="chapterId"/>
+			<result column="chapter_name" property="chapterName"/>
+			<result column="chapter_content" property="chapterContent"/>
+			<result column="chapter_count" property="chapterCount"/>
+			<result column="praise_count" property="praiseCount"/>
+			<result column="create_date" property="createDate"/>
+		</collection>
+	</resultMap>
+	
+	<select id="queryNovelInfoCount" parameterType="NovelInfo"
+	resultType="Long" >
+		select count(*) from author_info a,novel_info n left outer join chapter_info c on n.novel_id = c.novel_id
+		<where>
+			a.author_id = n.author_id
+			<if test="novelId != null and novelId !=''">
+				and n.novel_id = #{novelId}
+			</if>
+			<if test="novelName != null and novelName !=''">
+				and n.novel_name like #{novelName}
+			</if>
+			<if test="novelStyle != null and novelStyle !=''">
+				and n.novel_style = #{novelStyle}
+			</if>
+			<if test="novelStatus != null and novelStatus !=''">
+				and n.novel_status = #{novelStatus}
+			</if>
+			<if test="novelGrade != null and novelGrade !=0">
+				and n.novel_grade = #{novelGrade}
+			</if>
+			<if test="novelAttribute != null and novelAttribute !=''">
+				and n.novel_attribute = #{novelAttribute}
+			</if>
+			<if test="novelCount != null and novelCount !=0">
+				and n.novel_count = #{novelCount}
+			</if>
+			<if test="updateDate != null">
+				and n.update_date = #{updateDate}
+			</if>
+			<if test="novelLable != null and novelLable !=''">
+				and n.novel_lable like #{novelLable}
+			</if>
+		</where>
+	</select>
+	
+	<select id="queryNovelInfo" parameterType="NovelInfo"
+	resultType="List" resultMap="novelinfomap">
+		select * from author_info a,novel_info n left outer join chapter_info c on n.novel_id = c.novel_id
+		<where>
+			a.author_id = n.author_id
+			<if test="novelId != null and novelId !=''">
+				and n.novel_id = #{novelId}
+			</if>
+			<if test="novelName != null and novelName !=''">
+				and n.novel_name like #{novelName}
+			</if>
+			<if test="novelStyle != null and novelStyle !=''">
+				and n.novel_style = #{novelStyle}
+			</if>
+			<if test="novelStatus != null and novelStatus !=''">
+				and n.novel_status = #{novelStatus}
+			</if>
+			<if test="novelGrade != null and novelGrade !=0">
+				and n.novel_grade = #{novelGrade}
+			</if>
+			<if test="novelAttribute != null and novelAttribute !=''">
+				and n.novel_attribute = #{novelAttribute}
+			</if>
+			<if test="novelCount != null and novelCount !=0">
+				and n.novel_count = #{novelCount}
+			</if>
+			<if test="updateDate != null">
+				and n.update_date = #{updateDate}
+			</if>
+			<if test="novelLable != null and novelLable !=''">
+				and n.novel_lable like #{novelLable}
+			</if>
+		</where>
+		<!-- order by n.#{order} desc -->
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+

@@ -8,7 +8,7 @@
 	</insert>
 	
 	<delete id="deleteAuthorInfo" parameterType="AuthorInfo">
-		delete from author_info where author_id = #{authorId} or author_tele = #{authorTele} or author_email = #{authorEmail}
+		delete from author_info where author_id = #{authorId}
 	</delete>
 	
 	<update id="updateAuthorInfo" parameterType="AuthorInfo">
@@ -33,50 +33,68 @@
 		<result column="author_vip" property="authorVip"/>
 		<result column="enroll_date" property="enrollDate"/>
 		<result column="end_date" property="endDate"/>
+		<collection property="novelInfos" ofType="NovelInfo">
+			<id column="novel_id" property="novelId"/>
+			<result column="novel_name" property="novelName"/>
+			<result column="novel_style" property="novelStyle"/>
+			<result column="novel_status" property="novelStatus"/>
+			<result column="novel_attribute" property="novelAttribute"/>
+			<result column="novel_synopsis" property="novelSynopsis"/>
+			<result column="novel_lable" property="novelLable"/>
+			<result column="novel_image" property="novelImage"/>
+			<result column="create_date" property="createDate"/>
+			<result column="update_date" property="updateDate"/>
+			<result column="novel_grade" property="novelGrade"/>
+			<result column="novel_count" property="novelCount"/>
+			<result column="pageciew_count" property="pageviewCount"/>
+			<result column="collection_count" property="collectionCount"/>
+			<result column="praise_count" property="praiseCount"/>
+		</collection>
 	</resultMap>
 	
 	<select id="queryAuthorInfoCount" parameterType="AuthorInfo"
 	resultType="Long" >
-		select count(*) from author_info
+		select count(*) from author_info a left outer join novel_info n on a.author_id = n.author_id
 		<where>
 			<if test="authorId != null and authorId !=''">
-				and author_id = #{authorId}
+				and a.author_id = #{authorId}
 			</if>
 			<if test="authorName != null and authorName !=''">
-				and author_name = #{authorName}
+				and a.author_name = #{authorName}
 			</if>
 			<if test="authorTele != null and authorTele !=''">
-				and author_tele = #{authorTele}
+				and a.author_tele = #{authorTele}
 			</if>
 			<if test="authorEmail != null and authorEmail !=''">
-				and author_email = #{authorEmail}
+				and a.author_email = #{authorEmail}
 			</if>
 			<if test="author_vip != null and authorVip !=''">
-				and c.college_number = #{authorVip}
+				and a.author_vip = #{authorVip}
 			</if>
-		</where>		
+		</where>
 	</select>
 	
 	<select id="queryAuthorInfo" parameterType="AuthorInfo"
 	resultType="List" resultMap="authorinfomap">
-		select * from author_info
+		select * from author_info a left outer join novel_info n on a.author_id = n.author_id
 		<where>
 			<if test="authorId != null and authorId !=''">
-				and author_id = #{authorId}
+				and a.author_id = #{authorId}
 			</if>
 			<if test="authorName != null and authorName !=''">
-				and author_name = #{authorName}
+				and a.author_name = #{authorName}
 			</if>
 			<if test="authorTele != null and authorTele !=''">
-				and author_tele = #{authorTele}
+				and a.author_tele = #{authorTele}
 			</if>
 			<if test="authorEmail != null and authorEmail !=''">
-				and author_email = #{authorEmail}
+				and a.author_email = #{authorEmail}
 			</if>
 			<if test="author_vip != null and authorVip !=''">
-				and c.college_number = #{authorVip}
+				and a.author_vip = #{authorVip}
 			</if>
 		</where>
+		<!-- order by a.#{order} desc -->
 	</select>
 
 </mapper>

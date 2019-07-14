@@ -1,8 +1,9 @@
 package com.cqjtu.bookstore.bean;
 
 import java.util.Date;
+import java.util.List;
 
-public class AuthorInfo {
+public class AuthorInfo extends BaseBean {
 
 	private String authorId;
 	private String authorName;
@@ -13,8 +14,10 @@ public class AuthorInfo {
 	private String authorVip;
 	private Date enrollDate;
 	private Date endDate;
+	private List<NovelInfo> novelInfos;
 
 	public String getAuthorId() {
+		this.setOrder(this.enrollDate);
 		return authorId;
 	}
 
@@ -54,11 +57,11 @@ public class AuthorInfo {
 		this.authorPassword = authorPassword;
 	}
 
-	public String getAuthorAvator() {
+	public String getAuthorAvatar() {
 		return authorAvatar;
 	}
 
-	public void setAuthorAvator(String authorAvatar) {
+	public void setAuthorAvatar(String authorAvatar) {
 		this.authorAvatar = authorAvatar;
 	}
 
@@ -84,6 +87,14 @@ public class AuthorInfo {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	public List<NovelInfo> getNovelInfos() {
+		return novelInfos;
+	}
+
+	public void setNovelInfos(List<NovelInfo> novelInfos) {
+		this.novelInfos = novelInfos;
 	}
 
 }

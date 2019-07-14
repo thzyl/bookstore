@@ -17,17 +17,17 @@ public class AuthorInfoController {
 	AuthorInfoService authorInfoService;
 
 	@RequestMapping("/login")
-	public String index() {
-		Date d = new Date();
+	public String login() {
+		Date date = new Date();
 		AuthorInfo authorInfo = new AuthorInfo();
 		authorInfo.setAuthorName("thzyl");
 		authorInfo.setAuthorTele("15736287593");
-		authorInfo.setAuthorEmail("1827289175@qq.com");
+		authorInfo.setAuthorEmail("1837289175@qq.com");
 		authorInfo.setAuthorPassword("thzyl1325");
 		authorInfo.setAuthorVip("true");
-		authorInfo.setAuthorId(String.valueOf(Math.abs((authorInfo.getAuthorTele() + d.toString()).hashCode()))
+		authorInfo.setAuthorId(String.valueOf(Math.abs((authorInfo.getAuthorTele() + date.toString()).hashCode()))
 				+ Math.round(Math.random() * 100));
-		authorInfo.setEnrollDate(d);
+		authorInfo.setEnrollDate(date);
 		authorInfoService.authorInfoEnroll(authorInfo);
 		return "index";
 	}
