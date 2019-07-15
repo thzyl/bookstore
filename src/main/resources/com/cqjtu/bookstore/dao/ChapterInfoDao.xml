@@ -41,7 +41,7 @@
 			<result column="update_date" property="updateDate"/>
 			<result column="novel_grade" property="novelGrade"/>
 			<result column="novel_count" property="novelCount"/>
-			<result column="pageciew_count" property="pageviewCount"/>
+			<result column="pageview_count" property="pageviewCount"/>
 			<result column="collection_count" property="collectionCount"/>
 			<result column="praise_count" property="praiseCount"/>
 		</association >

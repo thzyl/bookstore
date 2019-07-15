@@ -44,7 +44,7 @@
 			<result column="update_date" property="updateDate"/>
 			<result column="novel_grade" property="novelGrade"/>
 			<result column="novel_count" property="novelCount"/>
-			<result column="pageciew_count" property="pageviewCount"/>
+			<result column="pageview_count" property="pageviewCount"/>
 			<result column="collection_count" property="collectionCount"/>
 			<result column="praise_count" property="praiseCount"/>
 		<association property="authorInfo" javaType="AuthorInfo">
@@ -63,7 +63,7 @@
 			<result column="chapter_name" property="chapterName"/>
 			<result column="chapter_content" property="chapterContent"/>
 			<result column="chapter_count" property="chapterCount"/>
-			<result column="praise_count" property="praiseCount"/>
+			<result column="chapter_order" property="chapterOrder"/>
 			<result column="create_date" property="createDate"/>
 		</collection>
 	</resultMap>
