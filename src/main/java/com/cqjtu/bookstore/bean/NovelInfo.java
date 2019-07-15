@@ -20,11 +20,10 @@ public class NovelInfo extends BaseBean {
 	private Integer pageviewCount;
 	private Integer collectionCount;
 	private Integer praiseCount;
-	private AuthorInfo authorInfo;
-	private List<ChapterInfo> chapterInfos;
+	private UserInfo authorInfo;
+	private List<ChapterInfo> chapterInfo;
 
 	public String getNovelId() {
-		this.setOrder(this.novelCount);
 		return novelId;
 	}
 
@@ -144,20 +143,20 @@ public class NovelInfo extends BaseBean {
 		this.praiseCount = praiseCount;
 	}
 
-	public AuthorInfo getAuthorInfo() {
+	public UserInfo getAuthorInfo() {
 		return authorInfo;
 	}
 
-	public void setAuthorInfo(AuthorInfo authorInfo) {
+	public void setAuthorInfo(UserInfo authorInfo) {
 		this.authorInfo = authorInfo;
 	}
 
-	public List<ChapterInfo> getChapterInfos() {
-		return chapterInfos;
+	public List<ChapterInfo> getChapterInfo() {
+		return chapterInfo;
 	}
 
-	public void setChapterInfos(List<ChapterInfo> chapterInfos) {
-		this.chapterInfos = chapterInfos;
+	public void setChapterInfo(List<ChapterInfo> chapterInfo) {
+		this.chapterInfo = chapterInfo;
 	}
 
 }

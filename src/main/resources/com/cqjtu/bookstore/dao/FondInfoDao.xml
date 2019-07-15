@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqjtu.bookstore.dao.FondInfoDao">
+	
+	<insert id="addFondInfo" parameterType="FondInfo">
+		insert into fond_info(fond_id,fans_id,idol_id) 
+		values(#{fondId},#{fansInfo.userId},#{idolInfo.userId})
+	</insert>
+	
+	<delete id="deleteFondInfo" parameterType="FondInfo">
+		delete from fond_info where fond_id = #{fondId}
+	</delete>
+	
+	<resultMap type="FondInfo" id="fondinfomap">
+		<id column="fond_id" property="fondId"/>
+		<association property="fansInfo" javaType="UserInfo">
+			<id column="user_id" property="userId"/>
+			<result column="user_name" property="userName"/>
+			<result column="user_tele" property="userTele"/>
+			<result column="user_email" property="userEmail"/>
+			<result column="user_password" property="userPassword"/>
+			<result column="user_avatar" property="userAvatar"/>
+			<result column="user_vip" property="userVip"/>
+			<result column="enroll_date" property="enrollDate"/>
+			<result column="vip_date" property="vipDate"/>
+		</association >
+		<!-- <association property="idolInfo" javaType="UserInfo">
+			<id column="user_id" property="userId"/>
+			<result column="user_name" property="userName"/>
+			<result column="user_tele" property="userTele"/>
+			<result column="user_email" property="userEmail"/>
+			<result column="user_password" property="userPassword"/>
+			<result column="user_avatar" property="userAvatar"/>
+			<result column="user_vip" property="userVip"/>
+			<result column="enroll_date" property="enrollDate"/>
+			<result column="vip_date" property="vipDate"/>
+		</association > -->
+		<association property="idolInfo" javaType="UserInfo">
+			<id column="id" property="userId"/>
+			<result column="name" property="userName"/>
+			<result column="tele" property="userTele"/>
+			<result column="email" property="userEmail"/>
+			<result column="password" property="userPassword"/>
+			<result column="avatar" property="userAvatar"/>
+			<result column="vip" property="userVip"/>
+			<result column="ed" property="enrollDate"/>
+			<result column="vd" property="vipDate"/>
+		</association >
+	</resultMap>
+	
+	<select id="queryFondInfoCount" parameterType="FondInfo"
+	resultType="Long" >
+		select count(*) from fond_info f,user_info u1,user_info u2
+		<where>
+			f.fans_id=u1.user_id and f.idol_id=u2.user_id
+			<if test="fondId != null and fondId !=''">
+				and f.fond_id = #{fondId}
+			</if>
+			<if test="fansInfo != null and fansInfo.userId !=''">
+				and f.fans_id = #{fansInfo.userId}
+			</if>
+			<if test="idolInfo != null and idolInfo.userId !=''">
+				and f.idol_id = #{idolInfo.userId}
+			</if>
+		</where>
+	</select>
+	
+	<sql id="same_list">
+        u1.user_id,u1.user_name,u1.user_tele,u1.user_email,u1.user_password,u1.user_avatar,u1.user_vip,u1.enroll_date,u1.vip_date,
+        u2.user_id id,u2.user_name name,u2.user_tele tele,u2.user_email email,u2.user_password password,
+        u2.user_avatar avatar,u2.user_vip vip ,u2.enroll_date ed,u2.vip_date vd
+    </sql>
+	
+	<select id="queryFondInfo" parameterType="FondInfo"
+	resultType="List" resultMap="fondinfomap">
+		select <include refid="same_list"/>
+		from fond_info f,user_info u1,user_info u2
+		<where>
+			f.fans_id=u1.user_id and f.idol_id=u2.user_id
+			<if test="fondId != null and fondId !=''">
+				and f.fond_id = #{fondId}
+			</if>
+			<if test="fansInfo != null and fansInfo.userId !=''">
+				and f.fans_id = #{fansInfo.userId}
+			</if>
+			<if test="idolInfo != null and idolInfo.userId !=''">
+				and f.idol_id = #{idolInfo.userId}
+			</if>
+		</where>
+	</select>
+
+</mapper>

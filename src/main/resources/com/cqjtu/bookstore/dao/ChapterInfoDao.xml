@@ -3,8 +3,8 @@
 <mapper namespace="com.cqjtu.bookstore.dao.ChapterInfoDao">
 	
 	<insert id="addChapterInfo" parameterType="ChapterInfo">
-		insert into chapter_info(chapter_id,chapter_name,chapter_content,chapter_count,chapter_order,create_date,novel_id) 
-		values(#{chapterId},#{chapterName},#{chapterContent},#{chapterCount},#{chapterOrder},#{createDate},#{novelInfo.novelId})
+		insert into chapter_info(chapter_id,chapter_name,chapter_content,chapter_count,chapter_index,create_date,novel_id) 
+		values(#{chapterId},#{chapterName},#{chapterContent},#{chapterCount},#{chapterIndex},#{createDate},#{novelInfo.novelId})
 	</insert>
 	
 	<delete id="deleteChapterInfo" parameterType="ChapterInfo">
@@ -15,7 +15,7 @@
 		update chapter_info set chapter_name = #{chapterName},
 		chapter_content = #{chapterContent},
 		chapter_count = #{chapterCount},
-		chapter_order = #{chapterOrder},
+		chapter_Index = #{chapterIndex},
 		create_date = #{createDate},
 		novel_id = #{novelInfo.novelId}
 		where chapter_id = #{chapterId}
@@ -26,7 +26,7 @@
 		<result column="chapter_name" property="chapterName"/>
 		<result column="chapter_cotent" property="chapterContent"/>
 		<result column="chapter_count" property="chapterCount"/>
-		<result column="chapter_order" property="chapterOrder"/>
+		<result column="chapter_index" property="chapterIndex"/>
 		<result column="create_date" property="createDate"/>
 		<association property="novelInfo" javaType="NovelInfo">
 			<id column="novel_id" property="novelId"/>
@@ -58,8 +58,8 @@
 			<if test="chapterName != null and chapterName !=''">
 				and c.chapter_name = #{chapterName}
 			</if>
-			<if test="chapterOrder != null and chapterOrder !=''">
-				and c.chapter_order = #{chapterOrder}
+			<if test="chapterIndex != null and chapterIndex !=''">
+				and c.chapter_index = #{chapterIndex}
 			</if>
 		</where>
 	</select>
@@ -75,8 +75,8 @@
 			<if test="chapterName != null and chapterName !=''">
 				and c.chapter_name = #{chapterName}
 			</if>
-			<if test="chapterOrder != null and chapterOrder !=''">
-				and c.chapter_order = #{chapterOrder}
+			<if test="chapterIndex != null and chapterIndex !=''">
+				and c.chapter_index = #{chapterIndex}
 			</if>
 		</where>
 		<!-- order by c.#{order} asc -->

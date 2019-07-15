@@ -23,18 +23,25 @@ public class ChapterInfoController {
 		Date date = new Date();
 		ChapterInfo chapterInfo = new ChapterInfo();
 		NovelInfo novelInfo = new NovelInfo();
+
 		/*
 		 * chapterInfo.setChapterName("梅瑟大学"); chapterInfo.setChapterCount(200);
-		 * chapterInfo.setChapterOrder(1); chapterInfo.setCreateDate(date);
+		 * chapterInfo.setChapterIndex(1); chapterInfo.setCreateDate(date);
 		 * chapterInfo.setChapterId(String.valueOf(Math.abs((chapterInfo.getChapterName(
 		 * ) + date.toString()).hashCode())) + Math.round(Math.random() * 100));
 		 * chapterInfoService.chapterCreate(chapterInfo);
 		 */
-		chapterInfo.setChapterId("10322691917");
-//		novelInfo.setNovelId("80834885135");
-//		chapterInfo.setNovelInfo(novelInfo);
+
+		chapterInfo.setChapterId("95700422945");
+
 		List<ChapterInfo> chapterInfos = chapterInfoService.queryChapterInfo(chapterInfo);
 		Long long1 = chapterInfoService.queryChapterInfoCount(chapterInfo);
+
+		/*
+		 * novelInfo.setNovelId("19469943903"); chapterInfo.setNovelInfo(novelInfo);
+		 * chapterInfoService.chapterAlter(chapterInfo);
+		 */
+
 		return "index";
 	}
 }

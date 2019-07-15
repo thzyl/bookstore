@@ -7,13 +7,12 @@ public class ChapterInfo extends BaseBean {
 	private String chapterId;
 	private String chapterName;
 	private String chapterContent;
+	private Integer chapterIndex;
 	private Integer chapterCount;
-	private Integer chapterOrder;
 	private Date createDate;
 	private NovelInfo novelInfo;
 
 	public String getChapterId() {
-		this.setOrder(this.chapterOrder);
 		return chapterId;
 	}
 
@@ -37,20 +36,20 @@ public class ChapterInfo extends BaseBean {
 		this.chapterContent = chapterContent;
 	}
 
+	public Integer getChapterIndex() {
+		return chapterIndex;
+	}
+
+	public void setChapterIndex(Integer chapterIndex) {
+		this.chapterIndex = chapterIndex;
+	}
+
 	public Integer getChapterCount() {
 		return chapterCount;
 	}
 
 	public void setChapterCount(Integer chapterCount) {
 		this.chapterCount = chapterCount;
-	}
-
-	public Integer getChapterOrder() {
-		return chapterOrder;
-	}
-
-	public void setChapterOrder(Integer chapterOrder) {
-		this.chapterOrder = chapterOrder;
 	}
 
 	public Date getCreateDate() {

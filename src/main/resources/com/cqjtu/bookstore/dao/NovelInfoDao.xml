@@ -6,7 +6,7 @@
 		insert into novel_info(novel_id,novel_name,novel_style,novel_status,novel_attribute,novel_synopsis,novel_lable,
 		novel_image,create_date,update_date,novel_grade,novel_count,pageview_count,collection_count,praise_count,author_id) 
 		values(#{novelId},#{novelName},#{novelStyle},#{novelStatus},#{novelAttribute},#{novelSynopsis},#{novelLable},#{novelImage},
-		#{createDate},#{updateDate},#{novelGrade},#{novelCount},#{pageviewCount},#{collectionCount},#{praiseCount},#{authorInfo.authorId})
+		#{createDate},#{updateDate},#{novelGrade},#{novelCount},#{pageviewCount},#{collectionCount},#{praiseCount},#{authorInfo.userId})
 	</insert>
 	
 	<delete id="deleteNovelInfo" parameterType="NovelInfo">
@@ -27,7 +27,7 @@
 		novel_count = #{novelCount},
 		collection_count = #{collectionCount},
 		praise_count = #{praiseCount},
-		author_id = #{authorInfo.authorId}
+		author_id = #{authorInfo.userId}
 		where novel_id = #{novelId}
 	</update>
 	
@@ -47,32 +47,32 @@
 			<result column="pageview_count" property="pageviewCount"/>
 			<result column="collection_count" property="collectionCount"/>
 			<result column="praise_count" property="praiseCount"/>
-		<association property="authorInfo" javaType="AuthorInfo">
-			<id column="author_id" property="authorId"/>
-			<result column="author_name" property="authorName"/>
-			<result column="author_tele" property="authorTele"/>
-			<result column="author_email" property="authorEmail"/>
-			<result column="author_password" property="authorPassword"/>
-			<result column="author_avatar" property="authorAvatar"/>
-			<result column="author_vip" property="authorVip"/>
+		<association property="authorInfo" javaType="userInfo">
+			<id column="user_id" property="userId"/>
+			<result column="user_name" property="userName"/>
+			<result column="user_tele" property="userTele"/>
+			<result column="user_email" property="userEmail"/>
+			<result column="user_password" property="userPassword"/>
+			<result column="user_avatar" property="userAvatar"/>
+			<result column="user_vip" property="userVip"/>
 			<result column="enroll_date" property="enrollDate"/>
-			<result column="end_date" property="endDate"/>
+			<result column="vip_date" property="vipDate"/>
 		</association>
-		<collection property="chapterInfos" ofType="ChapterInfo">
+		<collection property="chapterInfo" ofType="ChapterInfo">
 			<id column="chapter_id" property="chapterId"/>
 			<result column="chapter_name" property="chapterName"/>
 			<result column="chapter_content" property="chapterContent"/>
+			<result column="chapter_index" property="chapterIndex"/>
 			<result column="chapter_count" property="chapterCount"/>
-			<result column="chapter_order" property="chapterOrder"/>
 			<result column="create_date" property="createDate"/>
 		</collection>
 	</resultMap>
 	
 	<select id="queryNovelInfoCount" parameterType="NovelInfo"
 	resultType="Long" >
-		select count(*) from author_info a,novel_info n left outer join chapter_info c on n.novel_id = c.novel_id
+		select count(*) from user_info u,novel_info n left outer join chapter_info c on n.novel_id = c.novel_id
 		<where>
-			a.author_id = n.author_id
+			u.user_id = n.author_id
 			<if test="novelId != null and novelId !=''">
 				and n.novel_id = #{novelId}
 			</if>
@@ -105,9 +105,9 @@
 	
 	<select id="queryNovelInfo" parameterType="NovelInfo"
 	resultType="List" resultMap="novelinfomap">
-		select * from author_info a,novel_info n left outer join chapter_info c on n.novel_id = c.novel_id
+		select * from user_info u,novel_info n left outer join chapter_info c on n.novel_id = c.novel_id
 		<where>
-			a.author_id = n.author_id
+			u.user_id = n.author_id
 			<if test="novelId != null and novelId !=''">
 				and n.novel_id = #{novelId}
 			</if>
@@ -136,7 +136,6 @@
 				and n.novel_lable like #{novelLable}
 			</if>
 		</where>
-		<!-- order by n.#{order} desc -->
 	</select>
 	
 </mapper>
