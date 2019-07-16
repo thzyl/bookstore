@@ -103,7 +103,7 @@
 				and n.novel_lable like #{novelLable}
 			</if>
 			<if test="novelContent != null and novelContent !=''">
-				and n.novel_content like #{novelContent}
+				and n.novel_content = #{novelContent}
 			</if>
 		</where>
 	</select>
@@ -141,7 +141,7 @@
 				and n.novel_lable like #{novelLable}
 			</if>
 			<if test="novelContent != null and novelContent !=''">
-				and n.novel_content like #{novelContent}
+				and n.novel_content = #{novelContent}
 			</if>
 		</where>
 	</select>
