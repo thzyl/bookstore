@@ -12,6 +12,7 @@ public class NovelInfo extends BaseBean {
 	private String novelAttribute;
 	private String novelSynopsis;
 	private String novelLable;
+	private String novelContent;
 	private String novelImage;
 	private Date createDate;
 	private Date updateDate;
@@ -77,6 +78,14 @@ public class NovelInfo extends BaseBean {
 
 	public void setNovelLable(String novelLable) {
 		this.novelLable = novelLable;
+	}
+
+	public String getNovelContent() {
+		return novelContent;
+	}
+
+	public void setNovelContent(String novelContent) {
+		this.novelContent = novelContent;
 	}
 
 	public String getNovelImage() {

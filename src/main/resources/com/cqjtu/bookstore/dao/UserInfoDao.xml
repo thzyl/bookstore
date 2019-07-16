@@ -41,6 +41,7 @@
 			<result column="novel_attribute" property="novelAttribute"/>
 			<result column="novel_synopsis" property="novelSynopsis"/>
 			<result column="novel_lable" property="novelLable"/>
+			<result column="novel_content" property="novelContent"/>
 			<result column="novel_image" property="novelImage"/>
 			<result column="create_date" property="createDate"/>
 			<result column="update_date" property="updateDate"/>
