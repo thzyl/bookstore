@@ -42,6 +42,6 @@ public class ChapterInfoController {
 		 * chapterInfoService.chapterAlter(chapterInfo);
 		 */
 
-		return "index";
+		return "moyun";
 	}
 }
