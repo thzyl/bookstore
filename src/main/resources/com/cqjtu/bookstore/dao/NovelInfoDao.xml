@@ -72,9 +72,8 @@
 	
 	<select id="queryNovelInfoCount" parameterType="NovelInfo"
 	resultType="Long" >
-		select count(*) from user_info u,novel_info n left outer join chapter_info c on n.novel_id = c.novel_id
+		select count(*) from novel_info n
 		<where>
-			u.user_id = n.author_id
 			<if test="novelId != null and novelId !=''">
 				and n.novel_id = #{novelId}
 			</if>

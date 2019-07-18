@@ -62,6 +62,9 @@
 			<if test="chapterIndex != null and chapterIndex !=''">
 				and c.chapter_index = #{chapterIndex}
 			</if>
+			<if test="novelInfo != null and novelInfo.novelId !=''">
+				and c.novel_id = #{novelInfo.novelId}
+			</if>
 		</where>
 	</select>
 	
@@ -79,8 +82,11 @@
 			<if test="chapterIndex != null and chapterIndex !=''">
 				and c.chapter_index = #{chapterIndex}
 			</if>
+			<if test="novelInfo != null and novelInfo.novelId !=''">
+				and c.novel_id = #{novelInfo.novelId}
+			</if>
 		</where>
-		<!-- order by c.#{order} asc -->
+		order by c.chapter_index asc
 	</select>
 
 </mapper>

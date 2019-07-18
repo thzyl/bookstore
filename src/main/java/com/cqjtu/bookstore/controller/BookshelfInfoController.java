@@ -1,6 +1,7 @@
 package com.cqjtu.bookstore.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,11 +26,11 @@ public class BookshelfInfoController {
 		UserInfo userInfo = new UserInfo();
 		NovelInfo novelInfo = new NovelInfo();
 
-		userInfo.setUserId("67501704880");
-		novelInfo.setNovelId("19469943903");
-		bookShelfInfo.setUserInfo(userInfo);
-		bookShelfInfo.setNovelInfo(novelInfo);
-		bookShelfInfo.setReadLog(10);
+		/*
+		 * userInfo.setUserId("67501704880"); novelInfo.setNovelId("19469943903");
+		 * bookShelfInfo.setUserInfo(userInfo); bookShelfInfo.setNovelInfo(novelInfo);
+		 * bookShelfInfo.setReadLog(10);
+		 */
 		/*
 		 * bookShelfInfo.setBookshelfId( String.valueOf(Math.abs((userInfo.getUserId() +
 		 * novelInfo.getNovelId() + date.toString()).hashCode()) +
@@ -37,16 +38,17 @@ public class BookshelfInfoController {
 		 * bookShelfInfoService.addBookShelfInfo(bookShelfInfo);
 		 */
 
-		bookShelfInfo.setBookshelfId("1586355882");
+//		bookShelfInfo.setBookshelfId("1586355882");
+
+		List<BookShelfInfo> data = bookShelfInfoService.queryBookShelfInfo(bookShelfInfo);
+		Long data1 = bookShelfInfoService.queryBookShelfInfoCount(bookShelfInfo);
+
 		/*
-		 * List<BookShelfInfo> data =
-		 * bookShelfInfoService.queryBookShelfInfo(bookShelfInfo); Long data1 =
-		 * bookShelfInfoService.queryBookShelfInfoCount(bookShelfInfo);
+		 * bookShelfInfo.setUserInfo(userInfo); bookShelfInfo.setNovelInfo(novelInfo);
+		 * bookShelfInfo.setReadLog(9);
+		 * bookShelfInfoService.BookShelfInfoAlter(bookShelfInfo);
 		 */
-		bookShelfInfo.setUserInfo(userInfo);
-		bookShelfInfo.setNovelInfo(novelInfo);
-		bookShelfInfo.setReadLog(9);
-		bookShelfInfoService.BookShelfInfoAlter(bookShelfInfo);
-		return "index";
+
+		return "moyun";
 	}
 }
