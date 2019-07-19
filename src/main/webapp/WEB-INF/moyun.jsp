@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title></title>
+<title>MoYun</title>
 <meta charset="utf-8">
 
 <link href="https://fonts.googleapis.com/css?family=Work+Sans"
@@ -34,7 +34,7 @@ a {
 }
 
 li {
-	width: 274.3px;
+	width: 228.57px;
 	height: 60px;
 	font-weight: bold;
 	background-color: #707071;
@@ -61,7 +61,10 @@ div:hover {
 </head>
 <body>
 
-	<div style="height: 60px; width: 101%; margin-top: 20px;" class="row">
+<div class="row">
+<div class="col-1"></div>
+<div class="col-10">
+	<div style="height: 60px; width: 100%; margin-top: 20px;background-color: white;" class="row">
 		<div class="col-2" style="margin-top: -20px;">
 			<span style="font-size: 42.5px; font-weight: bold; color: #343A40;">MoYun</span>
 		</div>
@@ -75,7 +78,7 @@ div:hover {
 		</div>
 		<div class="col-1" style="float: right;">
 			<input id="login" type="button"
-				style="margin-left: 13px; margin-top: -8px;"
+				style="margin-left: 18px; margin-top: -8px;"
 				class="btn btn-outline-dark" value="登录|注册" onclick="ck()"></input>
 			<script type="text/javascript">
 				function ck() {
@@ -96,11 +99,11 @@ div:hover {
 			</button>
 
 			<div class="collapse navbar-collapse" id="probootstrap-nav"
-				style="width: 101%; backtext-align: center; margin-left: 3px;">
+				style="width: 100%; backtext-align: center;">
 				<ul id="menu" class="navbar-nav mr-auto">
 					<li id="kind" class="nav-item active"
 						style="background-color: #343A40" onmouseenter="sk(this.id)"
-						onmouseleave="hk(this.id)"><a name="kind" href="#"
+						onmouseleave="hk(this.id)"><a name="kind" href="./moyun.do"
 						class="nav-link" onclick="changebackground(this.name)">作品分类</a></li>
 					<li id="all" class="nav-item active"><a name="all" href="./kindNuSum.do" target="FrameName"
 						class="nav-link" onclick="changebackground(this.name)">全部作品</a></li>
@@ -116,13 +119,7 @@ div:hover {
 						href="#" class="nav-link" onclick="changebackground(this.name)">个人中心</a></li>
 				</ul>
 				<script type="text/javascript">
-				
-					/* if($("#novelkind").is(":hidden")){
-					    alert()
-					}else{
-					    alert()
-					} */
-					
+													
 					function sk(id) {
 						var color = document.getElementById(id).style.backgroundColor;
 						if(color!="rgb(52, 58, 64)"){
@@ -133,11 +130,13 @@ div:hover {
 					function hk(id) {
 						var x=event.clientX;
 					    var y=event.clientY;
-						if( x > 1 && x < 247 && y < 550 && y > 95){
-					    	/* clearTimeout(timer) */
+					    var color = document.getElementById(id).style.backgroundColor;
+						if( (x > 1) && (x < 247) && (y < 550) && (y > 95)){
 					    	$("#novelkind").show()
 					    }else{
-					    	$("#novelkind").hide(500)						    	
+					    	if(color!="rgb(52, 58, 64)"){
+					    		$("#novelkind").hide(500)	
+					    	}
 					    }
 					};
 						
@@ -198,10 +197,11 @@ div:hover {
 		</div>
 	</nav>
 	<div>
-		<iframe id="FrameId" name="FrameName" scrolling="no" frameborder="0"
-			width="100%"></iframe>
+
+		<!-- <iframe id="FrameId" name="FrameName" scrolling="no" frameborder="0"width="100%" src="../index.jsp"></iframe> -->
+		<iframe id="FrameId" name="FrameName" scrolling="no" frameborder="0"width="100%" height="1000px;" src="./loadframe.do"></iframe>
 		<div id="novelkind" onmouseleave="nh()"
-			style="width: 273.3px; margin-left: 1px; background-color: #343A40; opacity: 0.9; margin-top: -155px; position: absolute; z-index: 999">
+			style="width: 227.57px; margin-left: -2px; background-color: #343A40; opacity: 0.9; margin-top: -1006px; position: absolute; z-index: 999">
 			<div class="row" style="height: 65px;">
 				<div class="col-sm-6">
 					<div class="row" style="color: white; margin: 2px 0px 0px 2px;">
@@ -360,6 +360,9 @@ div:hover {
 			</div>
 		</div>
 	</div>
+</div>
+<div class="col-1"></div>
+</div>
 
 </body>
 </html>

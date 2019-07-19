@@ -31,9 +31,9 @@ public class FondInfoController {
 		 * Math.round(Math.random() * 1000000000)));
 		 * fondInfoService.concernFondInfo(fondInfo);
 		 */
-		fondInfo.setFondId("2484054516");
+		fondInfo.setIdolId("67501704880");
 		List<FondInfo> data = fondInfoService.queryFondInfo(fondInfo);
 		Long data1 = fondInfoService.queryFondInfoCount(fondInfo);
-		return "index";
+		return "moyun";
 	}
 }

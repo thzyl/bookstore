@@ -26,6 +26,12 @@ public class MainController {
 		return "moyun";
 	}
 
+	@RequestMapping("/loadframe")
+	public String LoadFrame(HttpServletRequest request) {
+		request.setAttribute("test", "test");
+		return "mainview";
+	}
+
 	public List<Long> getKindNuSum() {
 		List<String> kind = new ArrayList<>();
 		List<Long> kindNu = new ArrayList<>();

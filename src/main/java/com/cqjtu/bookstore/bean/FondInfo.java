@@ -3,8 +3,8 @@ package com.cqjtu.bookstore.bean;
 public class FondInfo {
 
 	private String fondId;
-	private UserInfo fansInfo;
-	private UserInfo idolInfo;
+	private String fansId;
+	private String idolId;
 
 	public String getFondId() {
 		return fondId;
@@ -14,20 +14,20 @@ public class FondInfo {
 		this.fondId = fondId;
 	}
 
-	public UserInfo getFansInfo() {
-		return fansInfo;
+	public String getFansId() {
+		return fansId;
 	}
 
-	public void setFansInfo(UserInfo fansInfo) {
-		this.fansInfo = fansInfo;
+	public void setFansId(String fansId) {
+		this.fansId = fansId;
 	}
 
-	public UserInfo getIdolInfo() {
-		return idolInfo;
+	public String getIdolId() {
+		return idolId;
 	}
 
-	public void setIdolInfo(UserInfo idolInfo) {
-		this.idolInfo = idolInfo;
-	}
+	public void setIdolId(String idolId) {
+		this.idolId = idolId;
+	};
 
 }
