@@ -42,4 +42,6 @@ public interface UserInfoDao {
 	 * @return
 	 */
 	public long queryUserInfoCount(UserInfo userInfo);
+
+	public List<UserInfo> queryUser(UserInfo userInfo);
 }

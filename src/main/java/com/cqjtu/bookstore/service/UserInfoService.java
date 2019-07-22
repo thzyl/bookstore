@@ -42,4 +42,6 @@ public interface UserInfoService {
 	 * @return
 	 */
 	public long queryuserInfoCount(UserInfo userInfo);
+
+	public List<UserInfo> queryuser(UserInfo userInfo);
 }

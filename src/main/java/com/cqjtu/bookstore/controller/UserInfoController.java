@@ -381,7 +381,7 @@ public class UserInfoController {
 			UserInfo u1 = new UserInfo();
 			u1.setUserId(f.getFansId());
 			try {
-				fs.add(userInfoService.queryuserInfo(u1).get(0));
+				fs.add(userInfoService.queryuser(u1).get(0));
 			} catch (Exception e) {
 				System.out.println(e);
 			}
@@ -390,7 +390,7 @@ public class UserInfoController {
 			UserInfo u2 = new UserInfo();
 			u2.setUserId(f.getIdolId());
 			try {
-				fs1.add(userInfoService.queryuserInfo(u2).get(0));
+				fs1.add(userInfoService.queryuser(u2).get(0));
 			} catch (Exception e) {
 			}
 		}

@@ -96,5 +96,15 @@
 			</if>
 		</where>
 	</select>
+	
+	<select id="queryUser" parameterType="UserInfo"
+	resultType="List" resultMap="userinfomap">
+		select * from user_info
+		<where>
+			<if test="userId != null and userId !=''">
+				and user_id = #{userId}
+			</if>
+		</where>
+	</select>
 
 </mapper>

@@ -272,7 +272,7 @@
 				$("#sendidcode").attr("value", "正在发送");
 				$("#sendidcode").attr("disabled", "true");
 				$.ajax({
-					url : "/bookstore/Code/sendIdCode.do",
+					url : "/bookstore/Code/sendIdCode.html",
 					type : "GET",
 					//发送数据的第一种格式，字符串...
 					data : "email=" + $("#email").val(),

@@ -43,4 +43,9 @@ public class UserInfoServiceImpl implements UserInfoService {
 		return userInfoDao.queryUserInfoCount(userInfo);
 	}
 
+	@Override
+	public List<UserInfo> queryuser(UserInfo userInfo) {
+		return userInfoDao.queryUser(userInfo);
+	}
+
 }
