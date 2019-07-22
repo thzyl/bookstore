@@ -143,6 +143,7 @@
 				and n.novel_content = #{novelContent}
 			</if>
 		</where>
+		order by n.praise_count desc
 	</select>
 	
 </mapper>
