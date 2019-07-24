@@ -53,6 +53,18 @@
 		</collection>
 	</resultMap>
 	
+	<resultMap type="UserInfo" id="user1infomap">
+		<id column="user_id" property="userId"/>
+		<result column="user_name" property="userName"/>
+		<result column="user_tele" property="userTele"/>
+		<result column="user_email" property="userEmail"/>
+		<result column="user_password" property="userPassword"/>
+		<result column="user_avatar" property="userAvatar"/>
+		<result column="user_vip" property="userVip"/>
+		<result column="enroll_date" property="enrollDate"/>
+		<result column="vip_date" property="vipDate"/>
+	</resultMap>
+	
 	<select id="queryUserInfoCount" parameterType="UserInfo"
 	resultType="Long" >
 		select count(*) from user_info u left outer join novel_info n on u.user_id = n.author_id
